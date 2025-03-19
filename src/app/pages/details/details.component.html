@@ -1,0 +1,45 @@
+@if (detailsproudct) {
+
+  <section>
+    <h1 class="text-center text-main my-0">Details Proudct</h1>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <img [src]="detailsproudct.imageCover" class="w-100 mb-3" [alt]=" detailsproudct.title ">
+        </div>
+        <div class="col-md-9">
+          <h2>{{detailsproudct.title.split(" " , 2).join(" ")}}</h2>
+          <p class="text-muted">{{detailsproudct.description}}</p>
+          <h3>{{ detailsproudct.category.name}}</h3>
+          <div class="card-body  px-2 py-3">
+            <h4 class="text-main font-sm " > {{detailsproudct.category.name}}  </h4>
+            <div class="d-flex justify-content-between align-items-center ">
+              <span> {{detailsproudct.price}} EGP</span>
+              <div class="d-flex  align-items-center">
+                <i class="fas fa-star rating-color"></i>
+                <span class="">{{detailsproudct.ratingsAverage}}</span>
+              </div>
+            </div>
+            <button class=" btn-main w-75 mx-auto d-block ">+Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+<section class="p-3 mx-auto w-75 ">
+  <div class="container">
+    <div class="row row-cols-sm-1 mb-2 row-cols-md-4 g-4 ">
+      @for (item of detailsproudct?.images ; track $index) {
+        <div>
+          <img [src]="item" [alt]="detailsproudct?.title" class="w-100 product  ">
+        </div>
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+

@@ -1,0 +1,33 @@
+<section class="bg-main-light rounded border shadow w-75 p-5 mx-auto ">
+  <div>
+
+  </div>
+  <h1 class="text-main text-center">shop Cart</h1>
+<div class="d-flex justify-content-between align-items-center ">
+  <span class="text-main " >Total Cart Price : {{cartDetails.totalCartPrice |currency:"GBP"   }} </span>
+  <button (click)="clearCart()" class="btn text-white bg-danger border rounded fw-medium fs-6 px-5 py-2">clear Cart</button>
+
+</div>
+  <div class="container">
+    @for (cart of cartDetails.products; track cart.product._id) {
+      <div class="row p-2 mb-3 border-bottom">
+        <div class="col-md-2">
+          <img [src]="cart.product.imageCover" height="100px" class="w-100 object-fit-contain" [alt]="cart.product.title">
+        </div>
+        <div class="col-md-10 d-flex justify-content-between align-items-center">
+          <div>
+            <h3> {{cart.product.title}} </h3>
+            <h4> {{cart.price  |currency:"GBP"      }} </h4>
+            <button (click)="removeItem(cart.product._id)"  class="btn btn-outline-success"> <i class="fas fa-trash-can text-main"></i> Remove </button>
+          </div>
+          <div class="d-flex align-items-center gap-4">
+            <button (click)="updateCount(cart.product._id , cart.count + 1)" class="text-main mybtn fs-2"><i class="fa-regular fa-square-plus "></i></button>
+            <span> {{cart.count}} </span>
+            <button (click)="updateCount(cart.product._id , cart.count - 1  )"  class="text-main mybtn fs-2"><i class="fa-regular fa-square-minus"></i></button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+</section>

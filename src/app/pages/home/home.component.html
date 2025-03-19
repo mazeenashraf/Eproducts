@@ -1,0 +1,32 @@
+<section>
+  <h2 class="text-main mt-2">popular products</h2>
+  <div class="containe py-4">
+    <div class="row row-cols-sm-1 row-cols-1 row-cols-md-4 g-4">
+      @for (prod of productList.slice(0,20); track prod._id) {
+        <div class="col">
+          <div class="product overflow-hidden "  >
+            <div [routerLink]="['/details' , prod._id]">
+              <div class="card-img">
+                <img [src]="prod.imageCover"  height="250px" class="w-100 object-fit-contain" [alt]="prod.title">
+              </div>
+              <div class="card-body  px-2 py-3">
+                <h4 class="text-main font-sm " > {{prod.category.name}}  </h4>
+                <h3 class="fw-medium"> {{prod.title.split(" " , 2 ).join(" ") }} </h3>
+                <div class="d-flex justify-content-between align-items-center ">
+                  <span> {{prod.price | currency:"GBP" }}</span>
+                  <div class="d-flex  align-items-center">
+                    <i class="fas fa-star rating-color"></i>
+                    <span class="">{{prod.ratingsAverage}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button  class=" btn-main w-75 mx-auto d-block " (click)="AddToCart(prod._id)" >Add To Cart</button>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</section>
